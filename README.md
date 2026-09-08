@@ -213,4 +213,3 @@ Jest test suite with 11 test cases organized into 5 categories: Success Cases, T
 | 256MB Lambda memory | Sufficient for JSON parsing + one API call. 50% cheaper than 512MB default. |
 | Local-first development | Budget pending. Build and test now, deploy instantly when approved. |
 | Node.js 20.x runtime | LTS version supported by Lambda. Matches local Node.js v22 (backward compatible). |
-```
