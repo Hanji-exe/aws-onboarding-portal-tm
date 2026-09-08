@@ -1,0 +1,46 @@
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  AWS Marketplace Onboarding Portal - Taskmaster HIaaS
+  Serverless backend for /aws-onboarding fulfillment webhook
+
+Globals:
+  Function:
+    Timeout: 10
+    Runtime: nodejs20.x
+    MemorySize: 256
+    Environment:
+      Variables:
+        IS_LOCAL: 'false'
+        AWS_MARKETPLACE_REGION: us-east-1
+
+Resources:
+  # Lambda Function
+  OnboardingFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: src/handlers/onboarding.handler
+      Description: Resolves AWS Marketplace token and provisions buyer access
+      Policies:
+        - Version: '2012-10-17'
+          Statement:
+            - Effect: Allow
+              Action:
+                - aws-marketplace:ResolveCustomer
+              Resource: '*'
+      Events:
+        OnboardingPost:
+          Type: HttpApi
+          Properties:
+            Path: /aws-onboarding
+            Method: POST
+
+Outputs:
+  OnboardingApi:
+    Description: API Gateway endpoint URL for the onboarding function
+    Value: !Sub 'https://${ServerlessHttpApi}.execute-api.${AWS::Region}.amazonaws.com/aws-onboarding'
+  OnboardingFunction:
+    Description: Lambda function ARN
+    Value: !GetAtt OnboardingFunction.Arn
+

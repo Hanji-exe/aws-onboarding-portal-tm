@@ -1,0 +1,21 @@
+{
+  "name": "aws-onboarding-portal-tm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --verbose",
+    "test:watch": "jest --watch --verbose"
+  },
+  
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@aws-sdk/client-marketplace-metering": "^3.1128.0"
+  },
+  "devDependencies": {
+    "jest": "^30.5.1"
+  }
+}

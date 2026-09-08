@@ -1,0 +1,8 @@
+{
+  "httpMethod": "POST",
+  "path": "/aws-onboarding",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": "{\"x-amzn-marketplace-token\": \"test-token-valid-abc123\"}"
+}
