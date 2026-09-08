@@ -1,4 +1,3 @@
-```markdown
 # AWS Marketplace Onboarding Portal — Test Environment
 
 ## Overview
